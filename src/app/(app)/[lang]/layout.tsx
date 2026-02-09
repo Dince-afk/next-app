@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/features/theme/theme-provider";
 import { ConsentPopup } from "@/features/consent";
+import { LocaleProvider } from "@/features/i18n/locale-provider";
 import Header from "@/components/layouts/main/header";
 import Footer from "@/components/layouts/main/footer";
 
@@ -21,13 +22,17 @@ const geistMono = Geist_Mono({
 //   description: "Application used for development purposes",
 // };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -37,9 +42,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <LocaleProvider locale={lang}>
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </LocaleProvider>
           <ConsentPopup />
         </ThemeProvider>
       </body>
