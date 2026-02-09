@@ -6,6 +6,7 @@ import { ConsentPopup } from "@/features/consent";
 import { LocaleProvider } from "@/features/i18n/locale-provider";
 import Header from "@/components/layouts/main/header";
 import Footer from "@/components/layouts/main/footer";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,13 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://rybbit.dihub.dev/api/script.js"
+          data-site-id="ffd4b7a5d9e6"
+          defer
+        ></Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
