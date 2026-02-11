@@ -79,7 +79,7 @@ export default buildConfig({
       collections: {
         images: {
           generateFileURL: ({ filename }) => {
-            return `https://media.vakuf.info/${filename}`;
+            return `https://media-next.dihub.dev/${filename}`;
           },
         },
       },

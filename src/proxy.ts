@@ -8,7 +8,7 @@ import { availableLocales, defaultLocale } from "@/features/i18n/config";
 import { match } from "@formatjs/intl-localematcher";
 
 export const config = {
-  matcher: ["/((?!_next|icon.svg|admin).*)"],
+  matcher: ["/((?!_next|icon.svg|admin|api).*)"],
 };
 
 export async function proxy(request: NextRequest) {
