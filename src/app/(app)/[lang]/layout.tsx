@@ -40,6 +40,11 @@ export default async function RootLayout({
           data-site-id="ffd4b7a5d9e6"
           defer
         ></Script>
+        <Script
+          defer
+          src="https://umami.dihub.dev/script.js"
+          data-website-id="95025184-a0c8-4972-be84-ec93babf008b"
+        ></Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
