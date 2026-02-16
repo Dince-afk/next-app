@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { GlobalConfig } from "payload";
 
 export const Homepage: GlobalConfig = {
@@ -15,12 +15,12 @@ export const Homepage: GlobalConfig = {
   hooks: {
     afterChange: [
       () => {
-        revalidatePath("/(app)/[lang]/(main)/homepage", "page");
+        // revalidatePath("/(app)/[lang]/(main)/homepage", "page");
       },
     ],
   },
   admin: {
-    preview: (_, { locale }) => `/${locale}/homepage`,
+    preview: (_, { locale }) => `/${locale}/`,
     // livePreview: {
     //   url: ({ locale }) => {
     //     const pageUrl = `/${locale}/homepage`;
