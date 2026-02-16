@@ -59,9 +59,6 @@ export default async function Page(props: PageProps<"/[lang]">) {
     <>
       {/* <RefreshRouteOnSave /> */}
       <div className="container mx-auto min-h-screen px-4 py-[15vh] pb-[15vh]">
-        <p>{(await props.searchParams).page}</p>
-        <Link href="/hello">Test</Link>
-        <LocalizedLink href="/impressum">Impressum</LocalizedLink>
         <div className="prose dark:prose-invert mx-auto space-y-10">
           <RichText data={content} />
         </div>
