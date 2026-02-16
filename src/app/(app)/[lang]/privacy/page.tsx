@@ -41,13 +41,9 @@ import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical
 //   // return languageData.map((lang) => ({ lang: lang.languageIsoCode }));
 // }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
+export default async function Page(props: PageProps<"/[lang]/privacy">) {
   // const { isEnabled } = await draftMode();
-  let { lang } = await params;
+  let { lang } = await props.params;
   if (!lang || lang !== "de") lang = "en"; // default to en for all other lang params (hr, fr, es, ...)
   const payload = await getPayload({ config });
   const t = await payload.findGlobal({

@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import "./globals.css";
 import { ThemeProvider } from "@/features/theme/theme-provider";
@@ -6,7 +7,6 @@ import { ConsentPopup } from "@/features/consent";
 import { LocaleProvider } from "@/features/i18n/locale-provider";
 import Header from "@/components/layouts/main/header";
 import Footer from "@/components/layouts/main/footer";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,23 +23,12 @@ const geistMono = Geist_Mono({
 //   description: "Application used for development purposes",
 // };
 
-export default async function RootLayout({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ lang: string }>;
-}>) {
-  const { lang } = await params;
+export default async function RootLayout(props: LayoutProps<"/[lang]">) {
+  const { lang } = await props.params;
 
   return (
     <html lang={lang} suppressHydrationWarning>
       <head>
-        <Script
-          src="https://rybbit.dihub.dev/api/script.js"
-          data-site-id="ffd4b7a5d9e6"
-          defer
-        ></Script>
         <Script
           defer
           src="https://umami.dihub.dev/script.js"
@@ -57,7 +46,7 @@ export default async function RootLayout({
         >
           <LocaleProvider locale={lang}>
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen">{props.children}</main>
             <Footer />
           </LocaleProvider>
           <ConsentPopup />

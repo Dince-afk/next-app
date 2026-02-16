@@ -3,6 +3,7 @@ import config from "@payload-config";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import LocalizedLink from "@/features/i18n/localized-link";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 // import { RefreshRouteOnSave } from "@/components/refresh-route-on-save";
@@ -42,13 +43,9 @@ export async function generateMetadata({
 //   // return languageData.map((lang) => ({ lang: lang.languageIsoCode }));
 // }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
+export default async function Page(props: PageProps<"/[lang]">) {
   // const { isEnabled } = await draftMode();
-  let { lang } = await params;
+  let { lang } = await props.searchParams;
   if (!lang || lang !== "de") lang = "en"; // default to en for all other lang params (hr, fr, es, ...)
   const payload = await getPayload({ config });
   const t = await payload.findGlobal({
@@ -62,6 +59,8 @@ export default async function Page({
     <>
       {/* <RefreshRouteOnSave /> */}
       <div className="container mx-auto min-h-screen px-4 py-[15vh] pb-[15vh]">
+        <p>{(await props.searchParams).page}</p>
+        <Link href="/hello">Test</Link>
         <LocalizedLink href="/impressum">Impressum</LocalizedLink>
         <div className="prose dark:prose-invert mx-auto space-y-10">
           <RichText data={content} />
