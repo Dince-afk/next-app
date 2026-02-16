@@ -6,12 +6,7 @@ import { HTMLProps, useState } from "react";
 import { ThemeSwitcher } from "@/features/theme/theme-switcher";
 import LanguageSelector from "@/features/i18n/language-selector";
 import { Separator } from "@/components/ui/separator";
-
-const navigationLinks = [
-  { name: "Home", href: "/" },
-  { name: "Components", href: "/components" },
-  { name: "Test Page", href: "/test" },
-];
+import { navigationLinks } from "./config";
 
 export default function NavigationBar(props: HTMLProps<HTMLElement>) {
   const [isOpen, setIsOpen] = useState(false);

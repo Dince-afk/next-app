@@ -1,14 +1,11 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import LocalizedLink from "@/features/i18n/localized-link";
 import { usePathname } from "next/navigation";
 import { HTMLProps } from "react";
 
-const navigationLinks = [
-  { name: "Homepage", href: "/" },
-  { name: "Impressum", href: "impressum" },
-];
+import { cn } from "@/lib/utils";
+import LocalizedLink from "@/features/i18n/localized-link";
+import { navigationLinks } from "./config";
 
 interface NavigationLinksProps extends HTMLProps<HTMLElement> {
   variant: "mobile" | "desktop";

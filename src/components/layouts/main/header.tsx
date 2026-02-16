@@ -2,8 +2,8 @@ import { type HTMLProps } from "react";
 import { cn } from "@/lib/utils";
 
 import Logo from "@/components/ui/logo";
-import NavigationLinks from "./navigation-links";
-import MobileNavigation from "./mobile-navigation";
+import NavigationLinks from "@/features/navigation/navigation-links";
+import MobileNavigation from "@/features/navigation/mobile-navigation";
 import { Separator } from "@/components/ui/separator";
 import LanguageSelector from "@/features/i18n/language-selector";
 import { ThemeSwitcher } from "@/features/theme/theme-switcher";
